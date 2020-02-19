@@ -1,0 +1,42 @@
+﻿@page "/Consulta"
+@using PrimerParcialAplic2.Models
+@using PrimerParcialAplic2.Controllers
+
+<h3>Consulta</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Semestre</th>
+            <th>Limite</th>
+            <th>Tomados</th>
+            <th>Disponible</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in lista)
+        {
+            <tr>
+                <th>@item.InscripcionId</th>
+                <th>@item.Semestre.</th>
+                <th>@item.Limite</th>
+                <th>@item.Tomado.</th>
+                <th>@item.Disponible.</th>
+            </tr>
+        }
+    </tbody>
+
+</table>
+@code {
+    public List<Inscripciones> lista;
+
+	protected override void OnInitialized()
+	{
+		InscripcionControllers controller = new InscripcionControllers();
+
+		lista = controller.GetInscripciones(e => true);
+	}
+
+}

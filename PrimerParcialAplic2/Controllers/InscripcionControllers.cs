@@ -21,15 +21,16 @@ namespace PrimerParcialAplic2.Controllers
 
             }else
             {
-                paso=
+                paso = Modificar(inscripciones);
             }
+            return paso;
         }
         public bool Insertar(Inscripciones inscripciones)
         {
             bool paso = false;
             Contexto db = new Contexto();
 
-            db.inscripciones.Find(inscripciones);
+            db.inscripciones.Add(inscripciones);
             paso = db.SaveChanges() > 0;
 
             return paso;

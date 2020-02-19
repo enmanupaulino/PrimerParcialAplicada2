@@ -12,8 +12,11 @@ namespace PrimerParcialAplic2.Models
 
         [Key]
         public int InscripcionId { get; set; }
+        [Required (ErrorMessage ="no puede estar vacio")]
         public string Semestre { get; set; }
         public int Limite { get; set; }
+        [Required(ErrorMessage ="no puede estar vacio")]
+        [Range (1, 27, ErrorMessage ="Debe estar en un intervalo de 1 a 27") ]
         public int Tomado { get; set; }
         public int Disponible { get; set; }
 
@@ -21,7 +24,7 @@ namespace PrimerParcialAplic2.Models
         {
             InscripcionId = 0;
             Semestre = string.Empty;
-            Limite = 0;
+            Limite = 27;
             Tomado = 0;
             Disponible = 0;
         }
