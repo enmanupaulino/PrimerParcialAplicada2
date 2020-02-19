@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Entityframeworkcore.sqlite" Version="3.1.2" />
     <PackageReference Include="Microsoft.Entityframeworkcore.tools" Version="3.1.2">
       <PrivateAssets>all</PrivateAssets>
