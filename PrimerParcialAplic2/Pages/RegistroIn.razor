@@ -7,53 +7,54 @@
 <h3>Registro</h3>
 
 <EditForm Model="@inscripciones" OnInvalidSubmit="Guardar">
-    <DataAnnotationsValidator></DataAnnotationsValidator>
-
-    <div class=" form-group">
-        <label for=" InscripcionId">Id</label>
-        <InputNumber @bind-Value="inscripciones.InscripcionId"></InputNumber>
-        <button type="button" class=" btn " @onclick="Buscar">Buscar</button>
-        <ValidationMessage For="@(()=>inscripciones.InscripcionId)" />
-
-    </div>
     <div>
-        <label for=" Semestre">Semestre</label>
-        <InputText @bind-Value="inscripciones.Semestre" class="form-group" />
-        <ValidationMessage For="@(()=>inscripciones.Semestre)" />
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+
+        <div class=" form-group">
+            <label for=" InscripcionId">Id</label>
+            <InputNumber @bind-Value="inscripciones.InscripcionId"></InputNumber>
+            <button type="button" class=" btn-primary " @onclick="Buscar">Buscar</button>
+            <ValidationMessage For="@(()=>inscripciones.InscripcionId)" />
+
+        </div>
+        <div class="form-group">
+            <label for=" Semestre">Semestre</label>
+            <InputText @bind-Value="inscripciones.Semestre" class="form-group" />
+            <ValidationMessage For="@(()=>inscripciones.Semestre)" />
+        </div>
+
+
+        <div class="form-group">
+            <label for=" Limite">Limite</label>
+            <InputNumber @bind-Value="inscripciones.Limite" @oninput="Calcular" @onfocus="Calcular" @onfocusout="Calcular" disabled class="form-group"></InputNumber>
+            <ValidationMessage For="@(()=>inscripciones.Limite)" />
+        </div>
+
+        <div class="form-group">
+            <label for="Tomados">Tomados</label>
+            <InputNumber @bind-Value="inscripciones.Tomado" @oninput="Calcular" @onfocus="Calcular" @onfocusout="Calcular" class="form-group" ></InputNumber>
+            <ValidationMessage For="@(()=>inscripciones.Tomado)" />
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="Dispobible">Disponible</label>
+            <InputNumber @bind-Value="inscripciones.Disponible" disabled class="form-group" />
+            <ValidationMessage For="@(()=>inscripciones.Disponible)" />
+        </div>
+        <ValidationSummary></ValidationSummary>
+        <div class="form-group">
+
+            <button type="submit" class="btn btn-primary"> Guardar</button>
+            <button type="button" class="btn btn-danger" @onclick="Eliminar">Eliminar</button>
+            <button type="button" class="btn btn-danger" @onclick="Limpiar">Limpiar</button>
+        </div>
     </div>
-
-
-    <div>
-        <label for=" Limite">Limite</label>
-        <InputNumber @bind-Value="inscripciones.Limite" @oninput="Calcular" @onfocus="Calcular" @onfocusout="Calcular" disabled class="form-group"></InputNumber>
-        <ValidationMessage For="@(()=>inscripciones.Limite)" />
-    </div>
-
-    <div class="form-group">
-        <label for="Tomados">Tomados</label>
-        <InputNumber @bind-Value="inscripciones.Tomado" @oninput="Calcular" @onfocus="Calcular" @onfocusout="Calcular" class="form-control " />
-        <ValidationMessage For="@(()=>inscripciones.Tomado)" />
-    </div>
-
-
-
-    <div class="form-group">
-        <label for="Dispobible">Disponible</label>
-        <InputNumber @bind-Value="inscripciones.Disponible" disabled class="form-group" />
-        <ValidationMessage For="@(()=>inscripciones.Disponible)" />
-    </div>
-    <ValidationSummary></ValidationSummary>
-    <div class="form-group">
-         
-        <button type="submit" class="btn btn-outline-secondary" > Guardar</button>
-        <button type="button" class="btn btn-outline-danger" @onclick="Eliminar">Eliminar</button>
-        <button type="button" class="btn btn-outline-danger" @onclick="Limpiar">Limpiar</button>
-    </div>
-
     <h5>@Mensaje</h5>
 
 
-   
+
 
 </EditForm>
 
@@ -84,7 +85,7 @@
     public void Limpiar()
     {
         this.inscripciones = new Inscripciones();
-        
+
     }
     public void Buscar()
     {
