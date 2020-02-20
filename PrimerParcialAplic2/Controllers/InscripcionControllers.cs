@@ -15,13 +15,21 @@ namespace PrimerParcialAplic2.Controllers
         {
             bool paso = false;
             Contexto db = new Contexto();
-            if (inscripciones.InscripcionId == 0)
+            try
             {
-                paso = Insertar(inscripciones);
+                if (inscripciones.InscripcionId == 0)
+                {
+                    paso = Insertar(inscripciones);
 
-            }else
+                }
+                else
+                {
+                    paso = Modificar(inscripciones);
+                }
+            }
+            catch(Exception ex)
             {
-                paso = Modificar(inscripciones);
+                ex.Message.ToString();
             }
             return paso;
         }
@@ -29,10 +37,15 @@ namespace PrimerParcialAplic2.Controllers
         {
             bool paso = false;
             Contexto db = new Contexto();
-
-            db.inscripciones.Add(inscripciones);
-            paso = db.SaveChanges() > 0;
-
+            try
+            {
+                db.inscripciones.Add(inscripciones);
+                paso = db.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             return paso;
         }
         public bool Modificar(Inscripciones inscripciones)

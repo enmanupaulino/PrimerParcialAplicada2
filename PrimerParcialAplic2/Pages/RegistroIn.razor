@@ -6,8 +6,8 @@
 
 <h3>Registro</h3>
 
-<EditForm Model="@inscripciones" OnInvalidSubmit="Guardar">
-    <DataAnnotationsValidator></DataAnnotationsValidator>
+<EditForm Model="@inscripciones" OnValidSubmit="Guardar">
+    <DataAnnotationsValidator/>
  
        
         <div class=" form-group">
@@ -43,7 +43,7 @@
             <InputNumber @bind-Value="inscripciones.Disponible" disabled class="form-group" />
             <ValidationMessage For="@(()=>inscripciones.Disponible)" />
         </div>
-        <ValidationSummary></ValidationSummary>
+       
         <div class="form-group">
 
             <button type="submit" class="btn btn-primary"> Guardar</button>
